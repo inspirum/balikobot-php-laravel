@@ -1,0 +1,107 @@
+{
+  "name": "inspirum/balikobot-laravel",
+  "description": "Laravel package for inspirum/balikobot library",
+  "keywords": [
+    "balikobot",
+    "api-client",
+    "laravel",
+    "package"
+  ],
+  "homepage": "https://github.com/inspirum/balikobot-php-laravel",
+  "license": "MIT",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Tomáš Novotný",
+      "email": "tomas.novotny@inspirum.cz",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^8.1",
+    "illuminate/contracts": "^10.0",
+    "illuminate/support": "^10.0",
+    "inspirum/balikobot": "^7.6"
+  },
+  "require-dev": {
+    "inspirum/coding-standard": "^1.3",
+    "laravel/laravel": "^10.2",
+    "orchestra/testbench": "^8.5",
+    "phpstan/phpstan": "^1.10",
+    "phpunit/phpunit": "^10.0",
+    "squizlabs/php_codesniffer": "^3.7"
+  },
+  "autoload": {
+    "psr-4": {
+      "Inspirum\\Balikobot\\Integration\\Laravel\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Inspirum\\Balikobot\\Integration\\Laravel\\Tests\\": "tests"
+    }
+  },
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Inspirum\\Balikobot\\Integration\\Laravel\\BalikobotServiceProvider"
+      ]
+    }
+  },
+  "scripts": {
+    "test": [
+      "@style:phpcs",
+      "@test:unit",
+      "@style:phpstan",
+      "@check:requirement",
+      "@check:unused"
+    ],
+    "test:test": [
+      "@test:unit"
+    ],
+    "test:unit": [
+      "@phpunit --testsuite=Unit"
+    ],
+    "test:coverage": [
+      "@phpunit --coverage-text --coverage-html=var/phpunit/coverage"
+    ],
+    "test:unit:coverage": [
+      "@phpunit --testsuite=Unit --coverage-text --coverage-html=var/phpunit/coverage"
+    ],
+    "test:infection": [
+      "@infection"
+    ],
+    "style:phpcs": [
+      "@phpcs"
+    ],
+    "style:phpstan": [
+      "@phpstan -l 9"
+    ],
+    "style:check": [
+      "@style:phpcs",
+      "@style:phpstan"
+    ],
+    "style:fix": [
+      "@phpcbf src tests"
+    ],
+    "check:requirement": [
+      "@composerRequireChecker"
+    ],
+    "check:unused": [
+      "@composerUnused"
+    ],
+    "phpunit": "./vendor/bin/phpunit",
+    "phpcs": "./vendor/bin/phpcs -p -s --extensions=php --colors --report-width=140",
+    "phpstan": "./vendor/bin/phpstan analyse -c phpstan.neon",
+    "phpcbf": "./vendor/bin/phpcbf -p --extensions=php",
+    "infection": "./tools/infection",
+    "composerRequireChecker": "./tools/composer-require-checker check --config-file=$PWD/composer-require-checker.json",
+    "composerUnused": "./tools/composer-unused"
+  }
+}

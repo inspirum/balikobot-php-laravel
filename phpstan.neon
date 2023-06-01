@@ -1,0 +1,11 @@
+includes:
+    - vendor/phpstan/phpstan/conf/bleedingEdge.neon
+parameters:
+	level: 9
+	paths:
+		- src
+		- tests
+	ignoreErrors:
+		-
+			message: '#^Parameter \#\d+ \$.+ of class Inspirum\\Balikobot\\.+ constructor expects .+, .+ given\.$#'
+			path: src/BalikobotServiceProvider.php
