@@ -9,3 +9,6 @@ parameters:
 		-
 			message: '#^Parameter \#\d+ \$.+ of class Inspirum\\Balikobot\\.+ constructor expects .+, .+ given\.$#'
 			path: src/BalikobotServiceProvider.php
+		-
+			message: "#^Cannot access offset 'config' on Illuminate\\\\Contracts\\\\Foundation\\\\Application\\.$#"
+			path: src/BalikobotServiceProvider.php

@@ -151,7 +151,7 @@ final class BalikobotPackageTest extends TestCase
     private static function getProperty(object $service, string $key): mixed
     {
         $requester = new ReflectionClass($service);
-        $property  = $requester->getProperty($key);
+        $property = $requester->getProperty($key);
 
         return $property->getValue($service);
     }

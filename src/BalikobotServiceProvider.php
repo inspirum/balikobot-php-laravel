@@ -96,9 +96,9 @@ final class BalikobotServiceProvider extends LaravelServiceProvider
 
         $this->mergeConfigFrom(self::configFilepath(), self::ALIAS);
 
-        $config                = $this->getConfig($app);
-        $connections           = $this->resolveConnections($config);
-        $connectionsNames      = array_keys($connections);
+        $config = $this->getConfig($app);
+        $connections = $this->resolveConnections($config);
+        $connectionsNames = array_keys($connections);
         $defaultConnectionName = $this->resolveDefaultConnectionName($connections, $config['default'] ?? self::CONNECTION_DEFAULT);
 
         $this->registerClients($app, $connections, $defaultConnectionName);
